@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple LLM Web</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <main class="chat-app">
+      <header class="chat-header">
+        <h1>Simple LLM Web</h1>
+        <button id="clearBtn" type="button">清空历史</button>
+      </header>
+
+      <section id="messages" class="messages" aria-live="polite"></section>
+
+      <form id="chatForm" class="chat-input">
+        <input id="questionInput" type="text" placeholder="输入你的问题..." required />
+        <button id="sendBtn" type="submit">发送</button>
+      </form>
+    </main>
+
+    <script src="/static/script.js"></script>
+  </body>
+</html>

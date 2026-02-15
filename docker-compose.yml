@@ -1,0 +1,36 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_BASE_URL: ${OPENAI_BASE_URL:-https://api.deepseek.com/v1}
+      MODEL_NAME: ${MODEL_NAME:-deepseek-chat}
+      MAX_TOKENS: ${MAX_TOKENS:-2048}
+    restart: unless-stopped
+    deploy:
+      replicas: 2
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=2).read()",
+        ]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+  caddy:
+    image: caddy:2-alpine
+    depends_on:
+      web:
+        condition: service_healthy
+    ports:
+      - "80:80"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+    restart: unless-stopped
