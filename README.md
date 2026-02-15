@@ -10,7 +10,7 @@
 
 - 使用OpenAI兼容API调用大模型
 - 使用LocalStorage保存问答历史
-- 前端是AI写的
+- 前端是AI写的，颜色是我配的。
 
 ```mermaid
 flowchart LR
