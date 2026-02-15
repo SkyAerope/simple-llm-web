@@ -2,9 +2,12 @@
 
 一个基于`FastAPI`的简易大模型问答Web服务，支持接入通用OpenAI兼容API，使用Docker Compose部署。
 
-> [!CAUTION]
+> [!WARNING]
 > 本项目旨在完成[@LanshanTeam](https://github.com/LanshanTeam/)的寒假任务。
+> 
 > 如果你在寻找类似软件，我推荐使用[chatgpt-demo](https://github.com/anse-app/chatgpt-demo)。其使用Astro编写，支持Serverless部署。
+
+![前端截图](./docs/image.png)
 
 ## 特性
 
@@ -61,12 +64,6 @@ uv run uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 
 ```bash
 docker compose up -d --build
-```
-
-如果当前 Docker Compose 版本未应用 `deploy.replicas`，可使用：
-
-```bash
-docker compose up -d --build --scale web=2
 ```
 
 访问：`http://localhost`
